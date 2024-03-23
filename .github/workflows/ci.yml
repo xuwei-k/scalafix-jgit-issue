@@ -1,0 +1,25 @@
+on:
+  pull_request:
+  push:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        project: ["p1", "p2"]
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
+      with:
+        repository: 'scala/scala'
+        path: 'scala2'
+        fetch-depth: 0
+        fetch-tags: true
+    - uses: actions/setup-java@v4
+      with:
+        java-version: 17
+        distribution: adopt
+    - run: ls scala2
+    - run: sbt compile "${{ matrix.project }}/run"
