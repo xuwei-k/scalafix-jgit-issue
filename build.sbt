@@ -1,5 +1,5 @@
 lazy val common = Def.settings(
-  libraryDependencies += "org.eclipse.jgit" % "org.eclipse.jgit" % "5.13.3.202401111512-r",
+  libraryDependencies += "org.eclipse.jgit" % "org.eclipse.jgit" % "6.9.0.202403050737-r",
   run / javaOptions := Seq("-Xmx2G"),
   run / fork := true,
   run / baseDirectory := file("."),
