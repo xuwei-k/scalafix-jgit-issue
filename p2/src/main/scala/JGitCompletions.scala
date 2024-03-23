@@ -29,7 +29,7 @@ class JGitCompletion(cwd: Path) {
         repo.getRefDatabase().getRefsByPrefix(RefDatabase.ALL).asScala
       val git = new Git(repo)
       val refs0 =
-        Try(git.log().setMaxCount(20).call().asScala.toList).getOrElse(Nil)
+        Try(git.log().call().asScala.toList).getOrElse(Nil)
       RefValues(refList0, refs0)
     } else {
       RefValues(Nil, Nil)
